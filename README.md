@@ -23,7 +23,7 @@ Every 30 min the app will send a DELETE request to Elasticsearch for the indexes
 Grab the logs to check if it is working
 
 ```
-cf logs es-index-deleter
+cf logs es-index-deleter --recent
 ```
 
 And you should see some output similar to:
