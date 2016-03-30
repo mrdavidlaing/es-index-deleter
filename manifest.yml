@@ -1,0 +1,10 @@
+name: cf-app-events-logger
+buildpack: ruby_buildpack
+command: bundle exec ruby app.rb
+no-route: true
+no-hostname: true
+memory: 256M
+env:
+  ES_MASTER_URL: http://127.0.0.1:9200 
+  DELETED_INDEX_PATTERN: logs-unparsed-*
+  DELETE_EVERY: 10        # fetch event data every n minutes
