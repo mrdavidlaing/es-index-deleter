@@ -9,7 +9,9 @@ delete_every = ENV['DELETE_EVERY'].to_i || 10
 scheduler = Rufus::Scheduler.new
 
 scheduler.every "#{delete_every}m", :first_in => '1s' do
-  puts "Deleting index"
+  puts "==>Indexes before deletion"
+  puts `curl #{es_master}/_cat/indices`
+  puts "==>Deleting index"
   cmd = "curl -XDELETE #{es_master}/#{deleted_index_pattern}"
   puts cmd
   puts `#{cmd}`
